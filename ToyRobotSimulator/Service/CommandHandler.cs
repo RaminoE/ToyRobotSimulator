@@ -26,7 +26,7 @@ namespace ToyRobotSimulator.Service
         {
             if (command == null) { throw new ArgumentNullException("command is null"); }
 
-            switch (command[0])
+            switch (command[0].ToUpper())
             {
                 case DataConstants.PlaceName:
                     var placed = command.Length == 4 && _rob.Place(new PlacementRequestModel
@@ -51,7 +51,7 @@ namespace ToyRobotSimulator.Service
                     Helpers.RunCommandIfTrue(() => _rob.Report(), _placeHasBeenExecuted);
                     break;
                 default:
-                    break;
+                    throw new Exception("Invalid Command");
             }
 
             return _placeHasBeenExecuted;

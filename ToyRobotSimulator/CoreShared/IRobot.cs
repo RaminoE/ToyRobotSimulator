@@ -12,7 +12,7 @@ namespace ToyRobotSimulator.CoreShared
         public bool Place(PlacementRequestModel req);
         public void Left();
         public void Right();
-        public void Report();
+        public PlacementRequestModel Report();
         public void Move();
     }
 }

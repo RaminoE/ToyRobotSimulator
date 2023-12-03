@@ -8,6 +8,7 @@ namespace ToyRobotSimulator
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("START THE ROBOT SIMULATOR ");
             bool run = true;
 
             var handler = new CommandHandler(new Robot());
@@ -16,7 +17,11 @@ namespace ToyRobotSimulator
             {
                 try
                 {
-                    handler.HandleCommand(Helpers.GetArrayFromSplitInput(Console.ReadLine()));
+                    var data = (Helpers.GetArrayFromSplitInput(Console.ReadLine()));
+                    if (data.Length > 4)
+                        throw new Exception("Invalid Command");
+
+                    handler.HandleCommand(data);
                 }
                 catch (Exception e)
                 {

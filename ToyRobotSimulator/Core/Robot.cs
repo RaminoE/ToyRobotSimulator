@@ -32,6 +32,9 @@ namespace ToyRobotSimulator.Core
                 placed = true;
             }
 
+            if (placed == false)
+                throw new Exception("Invalid placement");
+
             return placed;
         }
 
@@ -76,9 +79,15 @@ namespace ToyRobotSimulator.Core
         }
 
         //Outputs comma-separated string with _x,_y and _f values
-        public void Report()
+        public PlacementRequestModel Report()
         {
             Console.WriteLine($"Output: {_x},{_y},{_f}");
+            return new PlacementRequestModel()
+            {
+                X = _x,
+                Y = _y,
+                F = _f,
+            };
         }
     }
 }
